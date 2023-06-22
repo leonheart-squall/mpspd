@@ -2,6 +2,8 @@
 
 Script em python 3 que faz download recursivo das imagens de usuários.
 
+Esse script foi desenvolvido para aprender conceitos multitrheading, segurança da informação e python básico. Não me responsabilizo pelo mal uso da ferramenta, usada aqui apenas para fins didáticos.
+
 O nome MPSPD remete a 
 -__MP__ - site que fazemos o download das imagens
 -**SPD** - de speed, pois a primeira versão feita era linear e fazia que o teste ficasse muito mais lento que o atual, que roda em multi threading
@@ -41,6 +43,8 @@ Aqui é a sequencia da foto no perfil. Nesse exemplo podemos dizer que o número
 
 ### O que o script faz?
 O script tenta, atravez de uma URL de referencia de uma foto existente, tentar fazer o download da URL. Caso exista uma foto nesse endereço, ele salva no diretório de execução e incremente ou decrementa os valores de photoid e photonumber para uma nova tentativa em loop, realizando uma recursividade.
+
+Uma coisa interessante é que quando um usuário apaga uma foto do perfil ou a foto não foi permitida pelos moderadores, a imagem ainda esta disponível no servidor, proporcionando acesso a algumas fotos +18
 
 ## Instalação
 
