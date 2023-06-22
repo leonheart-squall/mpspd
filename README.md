@@ -82,4 +82,4 @@ Nesse primeiro exemplo, o arquivo 15_14882708_14882708.jpeg é salvo e o script 
 
 Já no segundo, o mesmo arquivo é salvo e o script vai procurar o arquivo 14 na sequencia.
 
-
+PARA INTERROMPER O SCRIPT USE CRTL+C, repetidas vezes, até o script parar todas as threads.
