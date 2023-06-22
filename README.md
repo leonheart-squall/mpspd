@@ -83,3 +83,9 @@ Nesse primeiro exemplo, o arquivo 15_14882708_14882708.jpeg é salvo e o script 
 Já no segundo, o mesmo arquivo é salvo e o script vai procurar o arquivo 14 na sequencia.
 
 PARA INTERROMPER O SCRIPT USE CRTL+C, repetidas vezes, até o script parar todas as threads.
+
+## USO AVANÇADO
+Eu deixei um valor baixo de trheads. Se voce abrir o código, pode procurar pela variável:
+num_threads = 10
+
+O valor esta baixo para rodar em computadores velhos. Se você quer melhorar e aumentar a velocidade de procura para um único perfil, você pode testar valores mais altos, ou se achar que o script esta derrubando muitos recursos de sua máquina, você pode abaixar esse valor. 
