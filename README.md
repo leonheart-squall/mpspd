@@ -5,8 +5,8 @@ Script em python 3 que faz download recursivo das imagens de usuários.
 Esse script foi desenvolvido para aprender conceitos multitrheading, segurança da informação e python básico. Não me responsabilizo pelo mal uso da ferramenta, usada aqui apenas para fins didáticos.
 
 O nome MPSPD remete a 
--__MP__ - site que fazemos o download das imagens
--**SPD** - de speed, pois a primeira versão feita era linear e fazia que o teste ficasse muito mais lento que o atual, que roda em multi threading
+- __MP__ - site que fazemos o download das imagens
+- **SPD** - de speed, pois a primeira versão feita era linear e fazia que o teste ficasse muito mais lento que o atual, que roda em multi threading
 
 ## Requisitos
 Esse script roda em python 3e foi testado em Mac OS e Linux. Adaptaçõs podem ser necessárias para rodar em todos os sisteas operacionais
