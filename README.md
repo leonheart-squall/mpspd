@@ -57,6 +57,7 @@ Acesse o perfil da pessoa que você quer puxar as fotos em su navegador preferid
 Com o perfil aberto, você tem as *thumbs* de todas as fotos. Copie o endereço de uma foto. Sugiro que você em vez de ara todas as fotos do perfil em abas diferentes para poder identificar quais "buracos" existem nas mídias de photonumber e depois abrir cada aba, copiar  URL para executar o comando.
 
 A URLs das photos podem vir assim:
+
 -https://images.meupatrocinio.com/12511238/14882708/15/width=480,height=480
 -https://images.meupatrocinio.com/12511238/14882708/15/width=800,height=800
 -https://images.meupatrocinio.com/12511238/14882708/15/
