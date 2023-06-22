@@ -71,9 +71,11 @@ Você só vai colocar o -1 ao final caso deseje que o script decremente as URLs,
 Exemplo:
 
 **_python3 mpspd.py https://images.meupatrocinio.com/12511238/14882708/15/width=480,height=480_**
-No primeiro exemplo, o arquivo 15_14882708_14882708.jpeg é salvo e o script vai procurar o arquivo 16
+
+Nesse primeiro exemplo, o arquivo 15_14882708_14882708.jpeg é salvo e o script vai procurar o arquivo 16
 
 **_python3 mpspd.py https://images.meupatrocinio.com/12511238/14882708/15/width=480,height=480_ -1**
+
 Já no segundo, o mesmo arquivo é salvo e o script vai procurar o arquivo 14 na sequencia.
 
 
