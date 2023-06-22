@@ -62,9 +62,9 @@ Com o perfil aberto, você tem as *thumbs* de todas as fotos. Copie o endereço 
 
 A URLs das photos podem vir assim:
 
-- https://images.meupatrocinio.com/12511238/14882708/15/width=480,height=480
-- https://images.meupatrocinio.com/12511238/14882708/15/width=800,height=800
-- https://images.meupatrocinio.com/12511238/14882708/15/
+- https://images.meupatrocinio.com/12511238/14882708/15/width=480,height=480 ___VALIDO___
+- https://images.meupatrocinio.com/12511238/14882708/15/width=800,height=800 ___VALIDO___
+- https://images.meupatrocinio.com/12511238/14882708/15/ ___VALIDO___
 
 No terminal, já dentro da pasta criada par ao script, execute:
 
