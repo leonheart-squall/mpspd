@@ -40,7 +40,7 @@ class DownloadManager:
 
     def run(self):
         # Inicializa as threads
-        num_threads = 10  # Defina o número desejado de threads
+        num_threads = 200  # Defina o número desejado de threads
         threads = []
         for _ in range(num_threads):
             thread = threading.Thread(target=self.worker)
@@ -52,7 +52,7 @@ class DownloadManager:
 
         # Loop principal
         while True:
-            if self.queue.qsize() <= 35:
+            if self.queue.qsize() <= 205:
                 self.enqueue_photos()
             # self.enqueue_photos()
             time.sleep(0.001)
