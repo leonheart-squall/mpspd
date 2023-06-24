@@ -11,6 +11,7 @@ profileid = 173993  # ID do perfil
 baseurl = 'https://images.meupatrocinio.com/'  # URL base
 queued = 0  # Contador de fotos enfileiradas
 increment = 1  # Incremento
+num_threads = 10 # Defina o número desejado de threads
 
 # Declaração da variável inurl com valor padrão
 inurl = 'https://images.meupatrocinio.com/173993/15538230/289/'  # URL de entrada padrão
@@ -40,7 +41,9 @@ class DownloadManager:
 
     def run(self):
         # Inicializa as threads
-        num_threads = 200  # Defina o número desejado de threads
+        # num_threads = 10  # Defina o número desejado de threads
+        global num_threads
+
         threads = []
         for _ in range(num_threads):
             thread = threading.Thread(target=self.worker)
@@ -52,10 +55,10 @@ class DownloadManager:
 
         # Loop principal
         while True:
-            if self.queue.qsize() <= 205:
+            if self.queue.qsize() <= num_threads + 5:
                 self.enqueue_photos()
             # self.enqueue_photos()
-            time.sleep(0.001)
+            time.sleep(0.005)
 
     def enqueue_photos(self):
         # Enfileira as fotos para download
@@ -87,14 +90,14 @@ class DownloadManager:
 
         # url = f"{self.baseurl}/{self.profileid}/{self.lastphotoid}/{photoid}/"
         # url = f"{self.baseurl}/{self.profileid}/{self.lastphotoid}/{self.lastphoto}/"
-        print (url, end="\r")
+        print (url + '                                                            ', end="\r")
         # time.sleep(0.2)
 
         # Realiza o download
         try:
             response = requests.get(url, stream=True)
         except:
-            print('Esperando conexão em 2 segundos...')
+            print('Esperando conexão em 2 segundos...                             ', end="\r")
             # Aguarda 2 segundos e tenta novamente
             time.sleep(2)
             self.download_photo(url)
