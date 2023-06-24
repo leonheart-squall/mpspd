@@ -4,6 +4,7 @@ import threading
 import queue
 import time
 import requests
+import re
 
 # Definição das variáveis globais
 lastphoto = 289  # Última foto a ser baixada
@@ -75,6 +76,11 @@ class DownloadManager:
         #Incrementa lastphotoid
         self.lastphotoid += self.increment
 
+        # Repopula lista de arquivo baixados a cada 200 lastphotoid e testa se já foi baixado
+        if self.lastphotoid % 200 == 0:
+            self.populate_done_list()
+            self.check_done_list()
+
     def worker(self):
         # print('worker')
         while True:
@@ -97,13 +103,15 @@ class DownloadManager:
         for filename in os.listdir(directory):
             if filename.lower().endswith(tuple(extensions)):
                 # Adiciona o nome do arquivo à lista donelist
+                filename = filename.replace( '.' , '_' )
                 self.donelist.append(int(filename.split('_')[0]))
         # print(self.donelist)
 
     def check_done_list(self):
         if int(self.lastphoto) in self.donelist:
             print(f"Próxima foto {self.lastphoto} já existe ou é a última da faixa pré definida. \nEncerrando script....")
-            time.sleep(3)
+            time.sleep(1)
+            print("                                                             ")
             os._exit(0)
 
     def download_photo(self, url):
