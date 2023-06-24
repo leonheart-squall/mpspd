@@ -1,4 +1,5 @@
 import sys
+import os
 import threading
 import queue
 import time
@@ -12,6 +13,7 @@ baseurl = 'https://images.meupatrocinio.com/'  # URL base
 queued = 0  # Contador de fotos enfileiradas
 increment = 1  # Incremento
 num_threads = 10 # Defina o número desejado de threads
+# donelist = [0,999] # Defina breakpoints iniciais
 
 # Declaração da variável inurl com valor padrão
 inurl = 'https://images.meupatrocinio.com/173993/15538230/289/'  # URL de entrada padrão
@@ -37,18 +39,22 @@ class DownloadManager:
         self.lastphotoid = lastphotoid
         self.lastphoto = lastphoto
         self.increment = increment
+        self.donelist = [0,999]
         self.queue = queue.Queue()
 
     def run(self):
         # Inicializa as threads
-        # num_threads = 10  # Defina o número desejado de threads
         global num_threads
 
+        print(f"Iniciando {num_threads} threads...")
         threads = []
         for _ in range(num_threads):
             thread = threading.Thread(target=self.worker)
             thread.start()
             threads.append(thread)
+
+        # Gera a lista de arquivos já salvos
+        self.populate_done_list()
 
         # Alimenta a fila com os dados iniciais
         self.enqueue_photos()
@@ -62,8 +68,6 @@ class DownloadManager:
 
     def enqueue_photos(self):
         # Enfileira as fotos para download
-        # for photoid in range(self.lastphotoid, self.lastphotoid + 1):
-        #     url = f"{self.baseurl}{self.profileid}/{photoid}/{self.lastphoto}/"
         url = f"{self.baseurl}/{self.profileid}/{self.lastphotoid}/{self.lastphoto}/"
         # print(url)
         self.queue.put(url)
@@ -81,7 +85,28 @@ class DownloadManager:
             except queue.Empty:
                 break
 
+    def populate_done_list(self):
+        # Zera a lista de controle com valores iniciais
+        # global donelist
+        self.donelist = [0,999]
+
+        directory = os.getcwd()  # Diretório de execução do script
+        extensions = ['.jpeg', '.jpg', '.png']  # Extensões das imagens baixadas
+
+        # Percorre todos os arquivos no diretório
+        for filename in os.listdir(directory):
+            if filename.lower().endswith(tuple(extensions)):
+                # Adiciona o nome do arquivo à lista donelist
+                self.donelist.append(int(filename.split('_')[0]))
+        # print(self.donelist)
+
+    def check_done_list(self):
+        if int(self.lastphoto) in self.donelist:
+            print(f"Próxima foto {self.lastphoto} já existe ou é a última da faixa pré definida. \nEncerrando script....")
+            os._exit(0)
+
     def download_photo(self, url):
+        global donelist
         # Remonta a URL com base nos parâmetros
         photoid = url.split('/')[4]
         profileid = url.split('/')[3]
@@ -90,7 +115,7 @@ class DownloadManager:
 
         # url = f"{self.baseurl}/{self.profileid}/{self.lastphotoid}/{photoid}/"
         # url = f"{self.baseurl}/{self.profileid}/{self.lastphotoid}/{self.lastphoto}/"
-        print (url + '                                                            ', end="\r")
+        print (url, end="\r")
         # time.sleep(0.2)
 
         # Realiza o download
@@ -125,6 +150,12 @@ class DownloadManager:
 
                 # Limpa a fila de downloads após o download bem-sucedido
                 self.queue.queue.clear()
+
+                # Repopula lista de arquivos já baixados
+                self.populate_done_list()
+
+                # Testa se nova lastphoto já foi salvo
+                self.check_done_list()
                 return
 
             else:
@@ -141,5 +172,4 @@ class DownloadManager:
 
 if __name__ == '__main__':
     manager = DownloadManager()
-    # print("Start")
     manager.run()
