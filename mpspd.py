@@ -19,6 +19,10 @@ num_threads = 10 # Defina o número desejado de threads
 # Declaração da variável inurl com valor padrão
 inurl = 'https://images.meupatrocinio.com/173993/15538230/289/'  # URL de entrada padrão
 
+# Declara versão e imprime
+version = "1.1.0"
+print(f"Versão do script MPSPD: {version}")
+
 # Verifica se foi fornecido um argumento na linha de comando
 if len(sys.argv) > 1:
     inurl = sys.argv[1]
@@ -79,7 +83,7 @@ class DownloadManager:
         # Repopula lista de arquivo baixados a cada 200 lastphotoid e testa se já foi baixado
         if self.lastphotoid % 200 == 0:
             self.populate_done_list()
-            self.check_done_list()
+            # self.check_done_list()
 
     def worker(self):
         # print('worker')
@@ -108,7 +112,7 @@ class DownloadManager:
         # print(self.donelist)
 
     def check_done_list(self):
-        if int(self.lastphoto) in self.donelist:
+        if int(self.lastphoto + self.increment) in self.donelist:
             print(f"Próxima foto {self.lastphoto} já existe ou é a última da faixa pré definida. \nEncerrando script....")
             time.sleep(1)
             print("                                                             ")
