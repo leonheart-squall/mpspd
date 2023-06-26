@@ -112,8 +112,9 @@ class DownloadManager:
         # print(self.donelist)
 
     def check_done_list(self):
-        if int(self.lastphoto + self.increment) in self.donelist:
+        if int(self.lastphoto) in self.donelist:
             print(f"Próxima foto {self.lastphoto} já existe ou é a última da faixa pré definida. \nEncerrando script....")
+            print(self.donelist)
             time.sleep(1)
             print("                                                             ")
             os._exit(0)
