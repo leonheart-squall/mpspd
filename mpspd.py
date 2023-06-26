@@ -83,7 +83,7 @@ class DownloadManager:
         # Repopula lista de arquivo baixados a cada 200 lastphotoid e testa se já foi baixado
         if self.lastphotoid % 200 == 0:
             self.populate_done_list()
-            # self.check_done_list()
+            self.check_done_list()
 
     def worker(self):
         # print('worker')
