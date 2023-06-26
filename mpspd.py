@@ -20,7 +20,7 @@ num_threads = 10 # Defina o número desejado de threads
 inurl = 'https://images.meupatrocinio.com/173993/15538230/289/'  # URL de entrada padrão
 
 # Declara versão e imprime
-version = "1.1.0"
+version = "1.1.1"
 print(f"Versão do script MPSPD: {version}")
 
 # Verifica se foi fornecido um argumento na linha de comando
