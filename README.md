@@ -50,6 +50,11 @@ Uma coisa interessante é que quando um usuário apaga uma foto do perfil ou a f
 
 Copie o arquivo **mpspd.py** para uma pasta e execute conforme os paramtros necessários
 
+ATENÇÃO - Pode ser necessário instalar o módulo 'requests'. Para isso execute em linha de comando um dos comandos abaixo:
+* pip install requests
+* pip3 install requests
+* python3 -m pip install requests
+
 ## Como Usar
 
 Eu sugiro que você crie uma pasta para cada perfil do **MP** com o nome do usuário que você vai puxar a imagem. Se o usuário, por exemplo, se chama _Maria_, crie uma pasta _Maria_ e copie para dentro dessa pasta o script **mpspd.py**.
